@@ -3,14 +3,14 @@ import stringcmp
 
 __author__ = 'sunimal.malkakulage'
 
-with open('testNames.csv', 'rb') as f_open:
+with open('TEST_DATA.csv', 'rb') as f_open:
     msg = []
     # data =  [line.rstrip('\n\r').split(',') for line in f_open]
 
     for line in f_open:
         twoNames = line.rstrip('\n\r').split(',')
         print(twoNames)
-        s = '%13s %13s' % (twoNames[0], twoNames[1])
+        s = '%13s,%13s,' % (twoNames[0], twoNames[1])
 
         ##------Jaro------##
         start_time = time.time()
@@ -205,11 +205,11 @@ f = open('MyResult.csv', 'w')
 count = 0
 for i in msg:
     count += 1
-    csResults = ','.join(i.split(' '))
-
+    csResults = i.split(',')
+    finalCsResalt = csResults[0] + ',' + csResults[1] + ','.join(csResults[2].split(' '))
     # print(m)
     #print(count)
-    f.write(csResults)
+    f.write(finalCsResalt)
     f.write('\n')
 f.close()
 
